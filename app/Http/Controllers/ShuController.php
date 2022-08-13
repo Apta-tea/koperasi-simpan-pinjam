@@ -64,6 +64,7 @@ class ShuController extends Controller
                         \DB::table('nasabahs')->where('id',$n->id)->update(['saldo_akhir'=>$saldo_n]);
                     }
                     \DB::table('pengembalians')->where('aktif','=','1')->update(['aktif'=>'0']);
+                    \DB::table('pinjamans')->where('aktif','=','1')->update(['status'=>'0']);
                     $pesan = "Sisa hasil usaha sudah dibagikan pada semua anggota!";
                 }else{
                     if ((($max_nasabah*(($shu/100)/12))*$janggota)<$nlaba)
@@ -90,6 +91,7 @@ class ShuController extends Controller
                         \DB::table('nasabahs')->where('id',$n->id)->update(['saldo_akhir'=>$saldo_n]);
                     }
                     \DB::table('pengembalians')->where('aktif','=','1')->update(['aktif'=>'0']);
+                    \DB::table('pinjamans')->where('aktif','=','1')->update(['status'=>'0']);
                     $pesan = "Sisa hasil usaha sudah dibagikan pada semua anggota!";
                 }
                 }
@@ -98,4 +100,44 @@ class ShuController extends Controller
         return redirect('shu');
     }
 
+    public function ttp_buku()
+    {
+        $nasabah = Nasabah::all();
+        $data['jnasabah'] = count($nasabah); 
+        $data['kas'] = \DB::table('sisa_kas')->first();
+        $data['tot_pinjam'] = \DB::table('tot_pinjam')->first();
+        $data['saldo'] = \DB::table('nasabahs')->select(\DB::raw('sum(saldo_akhir) as saldo'))->first();
+        $data['laba'] = \DB::table('laba')->first();
+        return view('Shu.ttp',$data);
+    }
+
+    public function ttp(Request $request)
+    {
+        $user_id = \Auth::user()->id;
+        \DB::table('general_ledgers')->where('status_pembukuan','=','1')->update(['status_pembukuan'=>'0']);
+        \DB::table('general_ledgers')->insert([
+            'total' => $request->kas,
+            'jenis_transaksi' => 'wajib',
+            'user_id' => $user_id,
+            'status_pembukuan' => '1',
+            'created_at' => now()
+            ]);
+        \DB::table('general_ledgers')->insert([
+            'total' => $request->tot_pinjam,
+            'jenis_transaksi' => 'pinjaman',
+            'user_id' => $user_id,
+            'status_pembukuan' => '1',
+            'created_at' => now()
+            ]);
+        \DB::table('general_ledgers')->insert([
+            'total' => $request->laba,
+            'jenis_transaksi' => 'shu',
+            'user_id' => $user_id,
+            'status_pembukuan' => '1',
+            'created_at' => now()
+            ]);
+        $pesan = "Pembukuan periode ini sudah ditutup";
+        Session::flash('pesan',$pesan);
+        return redirect('shu/ttp_buku');
+    }
 }

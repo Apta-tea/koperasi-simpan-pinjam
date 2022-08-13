@@ -98,6 +98,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Pengurus</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="{{ url('shu') }}">Sisa Hasil Usaha</a></li>
+              <li><a class="dropdown-item" href="{{ url('shu/ttp_buku') }}">Tutup Buku</a></li>
               <li><a class="dropdown-item" target="_blank" href="{{ url('laporan/lappdf') }}">Laporan Transaksi</a></li>
               <li><a class="dropdown-item" href="{{ url('laporan/lapxls') }}">Laporan Excel</a></li>
             </ul>

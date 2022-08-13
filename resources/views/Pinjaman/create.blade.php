@@ -4,7 +4,7 @@
 {!! Form::open(array('url'=>'pinjaman')) !!}
     <table class='table table-bordered table-responsive-sm'>
         <tr><td>Nomor Rekening</td><td>{!! Form::text('no_rekening','',['class'=>'form-control','required','id'=>'norek']) !!}</td></tr>
-        <tr><td>Nama Lengkap</td><td>{!! Form::text('nama_lengkap','',['class'=>'form-control','required','disabled','id'=>'nama']) !!}</td></tr>
+        <tr><td>Nama Lengkap</td><td>{!! Form::text('nama_lengkap','',['class'=>'form-control','required','readonly','id'=>'nama']) !!}</td></tr>
         <tr><td>Jumlah Pinjaman</td><td>{!! Form::text('total','',['class'=>'form-control','required','id'=>'total']) !!}</td></tr>
         <tr><td>Jumlah Angsuran</td><td>{!! Form::text('angsuran','',['class'=>'form-control','placeholder'=>'Banyaknya kali (x) angsuran','maxlength'=>'2','required']) !!}</td></tr>
         <tr><td>Keperluan</td><td>{!! Form::text('ket','',['class'=>'form-control']) !!}</td></tr>

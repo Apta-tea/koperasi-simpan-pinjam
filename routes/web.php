@@ -46,3 +46,7 @@ Route::get('shu', [App\Http\Controllers\ShuController::class, 'index']);
 Route::post('shu/proc', [App\Http\Controllers\ShuController::class,'proc']);
 
 Route::post('pinjaman/get_name', [App\Http\Controllers\PinjamanController::class, 'get_name']);
+
+Route::get('shu/ttp_buku',[App\Http\Controllers\ShuController::class,'ttp_buku']);
+
+Route::post('shu/ttp',[App\Http\Controllers\ShuController::class,'ttp']);

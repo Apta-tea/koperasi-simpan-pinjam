@@ -22,8 +22,9 @@ return new class extends Migration
             $table->integer('angsuran');
             $table->float('persen',5);
             $table->enum('skema',['flat','nflat']);
-            $table->enum('status',['0','1']);
+            $table->enum('status',['0','1'])->default('1');
             $table->string('ket',30);
+            $table->enum('aktif',['0','1'])->default('1');
             $table->timestamps();
         });
     }

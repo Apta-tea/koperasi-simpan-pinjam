@@ -33,7 +33,7 @@
         {!! Form::hidden('jnasabah',$jnasabah) !!}
         {!! Form::hidden('simpanan',$saldo->saldo) !!}
         </td></tr><tr><td colspan="2">
-        {!! Form::submit('Proses',['class'=>'btn btn-success btn-sm',"onclick"=>"return confirm('Anda yakin?')"]) !!}
+        {!! Form::submit('Proses',['class'=>'btn btn-success btn-sm float-end',"onclick"=>"return confirm('Anda yakin?')"]) !!}
         {!! Form::close() !!}
         </td></tr>
     </table>
