@@ -9,7 +9,7 @@
     {!! Form::close() !!}
     </div></div>
 <br>
-{!! link_to('nasabah/create','Tambah Data',['class'=>'btn btn-danger btn-sm']) !!}
+{!! link_to('nasabah/create','+Tambah Data',['class'=>'btn btn-danger btn-sm']) !!}
 <br><br>
 <table class="table table-bordered table-responsive-sm" >
     <tr><th colspan="6" class="text-center">DATA NASABAH</th></tr>

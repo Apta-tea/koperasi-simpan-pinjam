@@ -16,7 +16,7 @@
     @endisset
 </table>
 <br>
-{!! link_to('pinjaman/create','Tambah Data',['class'=>'btn btn-danger btn-sm']) !!}
+{!! link_to('pinjaman/create','+Tambah Data',['class'=>'btn btn-danger btn-sm']) !!}
 <br><br>
 <table class="table table-bordered" >
     <tr><th colspan="7" class="text-center">DATA PINJAMAN</th></tr>
