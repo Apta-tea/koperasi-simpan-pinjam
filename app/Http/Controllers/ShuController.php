@@ -52,7 +52,7 @@ class ShuController extends Controller
                         'created_at' => now()
                         ]);
                     foreach($nasabah as $n){
-                        $saldo_shu = (($n->saldo_akhir/$simpanp)/100)*$nlaba;
+                        $saldo_shu = ((max($n->saldo_akhir,1)/$simpanp)/100)*$nlaba;
                         $saldo_n = $n->saldo_akhir+$saldo_shu;
                         \DB::table('transaksis')->insert([
                             'nasabah_id' => $n->id,
