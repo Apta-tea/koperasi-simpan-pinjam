@@ -64,10 +64,10 @@ class ShuController extends Controller
                         \DB::table('nasabahs')->where('id',$n->id)->update(['saldo_akhir'=>$saldo_n]);
                     }
                     \DB::table('pengembalians')->where('aktif','=','1')->update(['aktif'=>'0']);
-                    \DB::table('pinjamans')->where('aktif','=','1')->update(['status'=>'0']);
+                    \DB::table('pinjamans')->where('aktif','=','1')->update(['aktif'=>'0']);
                     $pesan = "Sisa hasil usaha sudah dibagikan pada semua anggota!";
                 }else{
-                    if ((($max_nasabah*(($shu/100)/12))*$janggota)<$nlaba)
+                    if ((($max_nasabah*(($shu/100)/12))*$janggota)>($nlaba-$operasional))
                     {
                         $pesan = "Nilai bagi hasil yang anda input terlalu besar, laba tidak mencukupi!";
                     }else{
@@ -91,7 +91,7 @@ class ShuController extends Controller
                         \DB::table('nasabahs')->where('id',$n->id)->update(['saldo_akhir'=>$saldo_n]);
                     }
                     \DB::table('pengembalians')->where('aktif','=','1')->update(['aktif'=>'0']);
-                    \DB::table('pinjamans')->where('aktif','=','1')->update(['status'=>'0']);
+                    \DB::table('pinjamans')->where('aktif','=','1')->update(['aktif'=>'0']);
                     $pesan = "Sisa hasil usaha sudah dibagikan pada semua anggota!";
                 }
                 }
