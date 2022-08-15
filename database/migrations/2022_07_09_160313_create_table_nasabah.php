@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('alamat');
             $table->string('telp',20);
             $table->string('foto',30);
-            $table->integer('saldo_akhir',20)->default('1');
+            $table->integer('saldo_akhir',20)->default('0');
             $table->enum('status_pinjaman',['0','1'])->default('0');
             $table->timestamps();
         });
