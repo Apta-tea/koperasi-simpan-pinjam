@@ -50,3 +50,9 @@ Route::post('pinjaman/get_name', [App\Http\Controllers\PinjamanController::class
 Route::get('shu/ttp_buku',[App\Http\Controllers\ShuController::class,'ttp_buku']);
 
 Route::post('shu/ttp',[App\Http\Controllers\ShuController::class,'ttp']);
+
+Route::get('operator',[App\Http\Controllers\HomeController::class,'operator'])->name('operator');
+
+Route::delete('delete_user/{home}',[App\Http\Controllers\HomeController::class,'destroy']);
+
+Route::post('adduser', [App\Http\Controllers\HomeController::class,'create']);

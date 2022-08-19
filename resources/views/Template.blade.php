@@ -112,7 +112,7 @@
           <a class="nav-link px-3" href="#">{{ Auth::user()->name }}</a>
           </div>
           <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="{{ route('register') }}">{{ __('Operator') }}</a>
+            <a class="nav-link px-3" href="{{ route('operator') }}">{{ __('Operator') }}</a>
           </div> 
           <div class="nav-item text-nowrap">
           {!! Form::open(array('url'=>'logout')) !!}
