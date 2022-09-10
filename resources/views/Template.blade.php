@@ -99,8 +99,8 @@
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="{{ url('shu') }}">Sisa Hasil Usaha</a></li>
               <li><a class="dropdown-item" href="{{ url('shu/ttp_buku') }}">Tutup Buku</a></li>
-              <li><a class="dropdown-item" target="_blank" href="{{ url('laporan/lappdf') }}">Laporan Transaksi</a></li>
-              <li><a class="dropdown-item" href="{{ url('laporan/lapxls') }}">Laporan Excel</a></li>
+              <!-- <li><a class="dropdown-item" target="_blank" href="{{ url('laporan/lappdf') }}">Laporan Transaksi</a></li> -->
+              <li><a class="dropdown-item" href="{{ url('laporan/lapxls') }}">Laporan Transaksi</a></li>
             </ul>
           </li>
       </ul>

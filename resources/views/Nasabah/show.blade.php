@@ -5,10 +5,15 @@
 <div class="col-sm-6">
     <table class='table table-bordered table-responsive-sm'>
         <tr><th colspan="3" class="text-center">NASABAH</th></tr>
-        <tr><td width="200">Nama</td><td>{{ $nasabah->nama_lengkap }}</td><td rowspan="4"><img src="{{ asset('foto').'/'.$nasabah->foto }}" width="100"></td></tr>
+        <tr><td width="200">Nama</td><td>{{ $nasabah->nama_lengkap }}</td><td rowspan="3"><img src="{{ asset('foto').'/'.$nasabah->foto }}" width="100"></td></tr>
         <tr><td>Nomor Rekening</td><td>{{ $nasabah->no_rekening }}</td></tr>
         <tr><td>Telepon</td><td>{{ $nasabah->tlp }}</td></tr>
-        <tr><td>Total Saldo</td><td>{{ number_format($nasabah->saldo_akhir) }}</td></tr>
+        <tr><td>Total Saldo</td><td>{{ number_format($nasabah->saldo_akhir) }}</td><td class="text-center">
+        {!! Form::open(array('url'=>'laporan/transNas')) !!}
+        {!! Form::hidden('nasabah_id',$nasabah->id) !!}
+        {!! Form::submit('Laporan',['class'=>'btn btn-success btn-sm','formtarget'=>'_blank']) !!}
+        {!! Form::close() !!}
+        </td></tr>
     </table>
 </div>
 <div class="col-sm-6">
@@ -18,7 +23,7 @@
         <tr><th colspan="2" class="text-center">FORM TRANSAKSI</th></tr>
         <tr><td width="200">Jumlah</td><td>{!! Form::text('total',null,['class'=>'form-control','required']) !!}</td></tr>
         <tr><td>Jenis Transaksi</td><td>{!! Form::select('jenis_transaksi',array('debet'=>'DEBET','wajib'=>'SIMPANAN WAJIB','sukarela'=>'SIMPANAN SUKARELA','denda'=>'DENDA'),['class'=>'form-control']) !!}</td></tr>
-        <tr><td colspan="2" >{!! Form::submit('Proses',['class'=>'btn btn-danger btn-sm']) !!}</td></tr>
+        <tr><td colspan="2">{!! Form::submit('Proses',['class'=>'btn btn-danger btn-sm float-end']) !!}</td></tr>
     </table>
     {!! Form::close() !!}
 </div>
