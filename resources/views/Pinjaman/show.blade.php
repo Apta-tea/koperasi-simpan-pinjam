@@ -7,6 +7,12 @@
         <tr><th colspan="2" class="text-center">NASABAH</th></tr>
         <tr><td width="200">Nama</td><td>{{ $angsuran[0]->nama_lengkap }}</td></tr>
         <tr><td>Nomor Rekening</td><td>{{ $angsuran[0]->no_rekening }}</td></tr>
+        <tr><td colspan="2">
+        {!! Form::open(array('url'=>'laporan/pinjNas')) !!}
+        {!! Form::hidden('pinjaman_id',$angsuran[0]->pinjaman_id) !!}
+        {!! Form::submit('Laporan',['class'=>'btn btn-primary btn-sm','formtarget'=>'_blank']) !!}
+        {!! Form::close() !!}
+        </td></tr>
     </table>
 </div>
 </div>
@@ -21,8 +27,11 @@
     <div class="col-sm-12">
         <table class="table table-bordered table-responsive-sm">
         <tr><td>Tanggal</td><td>Jumlah Cicilan</td><td>Skema</td><td>Operasi</td></tr>
+        @php
+        $no=1;
+        @endphp
         @foreach($angsuran as $a)
-        <tr><td>{{ tgl_id($a->created_at) }}</td><td>{{ number_format($a->jumlah_cicilan) }}</td><td>{{ $a->skema }}</td><td>
+        <tr><td>{{ tgl_id(tglAdd($a->created_at,$no)) }}</td><td>{{ number_format($a->jumlah_cicilan) }}</td><td>{{ $a->skema }}</td><td>
         {!! Form::open(array('url'=>'pinjaman/'.$a->id,'method'=>'patch')) !!}
         {!! Form::hidden('nama_lengkap',$a->nama_lengkap) !!}
         {!! Form::hidden('no_rekening',$a->no_rekening) !!}
@@ -32,6 +41,9 @@
         {!! Form::submit('Angsur',['class'=>'btn btn-success btn-sm',"onclick"=>"return confirm('Anda yakin?')"]) !!}
         {!! Form::close() !!}
         </td></tr>
+        @php
+        $no++;
+        @endphp
         @endforeach
     </table>
 </div>

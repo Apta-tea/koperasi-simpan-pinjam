@@ -58,3 +58,5 @@ Route::delete('delete_user/{home}',[App\Http\Controllers\HomeController::class,'
 Route::post('adduser', [App\Http\Controllers\HomeController::class,'create']);
 
 Route::post('laporan/transNas',[App\Http\Controllers\LaporanController::class,'transNas']);
+
+Route::post('laporan/pinjNas',[App\Http\Controllers\LaporanController::class,'pinjNas']);

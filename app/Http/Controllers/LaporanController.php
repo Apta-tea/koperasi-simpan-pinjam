@@ -90,6 +90,48 @@ class LaporanController extends Controller
         die;
     }
 
+    public function pinjNas(Request $request)
+    {
+        $pinjaman = \DB::table('angsurans')
+                    ->join('pinjamans','pinjamans.id','=','angsurans.pinjaman_id')
+                    ->where('angsurans.pinjaman_id','=',$request->pinjaman_id)
+                    ->where('angsurans.status','=','1')
+                    ->select('angsurans.id','angsurans.pinjaman_id','angsurans.jumlah_cicilan','pinjamans.nama_lengkap','pinjamans.no_rekening','angsurans.created_at','pinjamans.skema')
+                    ->get();
+        $fpdf = New pdf('P','mm','A4');
+        $fpdf->AliasNbPages();
+        $fpdf->AddPage();
+        $fpdf->SetFont('Times','B',12);
+        $fpdf->SetLeftMargin(25);
+        $fpdf->Cell(10,8,'Nama: '.$pinjaman[0]->nama_lengkap,0,1,'L');
+        $fpdf->Cell(10,8,'No. Rekening: '.$pinjaman[0]->no_rekening,0,1,'L');
+        $fpdf->Cell(10,8,'',0,1,'C');
+        $fpdf->Cell(10,8,'No',1,0,'C');
+        $fpdf->Cell(30,8,'Tanggal',1,0,'C');
+        $fpdf->Cell(40,8,'Skema',1,0,'C');
+        $fpdf->Cell(80,8,'Jumlah Cicilan',1,1,'C');
+        //$fpdf->Cell(40,8,'Sisa Pinjaman',1,1,'C');
+        $no=1;
+        foreach ($pinjaman as $p)
+        {
+            $fpdf->SetFont('Times','',12);
+            $fpdf->SetLeftMargin(25);
+            $fpdf->Cell(10,8,$no,1,0,'C');
+            $fpdf->Cell(30,8,tgl_id(tglAdd($p->created_at,$no)),1,0,'C');
+            $fpdf->Cell(40,8,$p->skema,1,0,'C');
+            $fpdf->Cell(80,8,number_format($p->jumlah_cicilan),1,1,'C');
+            $no++;
+        }
+        $tot_pinjam = \DB::table('angsurans')
+                    ->where('pinjaman_id','=',$request->pinjaman_id)
+                    ->where('angsurans.status','=','1')
+                    ->sum('jumlah_cicilan');
+        $fpdf->Cell(80,8,'Total Pinjaman: ',1,0,'L');
+        $fpdf->Cell(80,8,number_format($tot_pinjam),1,1,'C');
+        $fpdf->Output();
+        die;
+    }
+
 
 
     public function lapXls()
