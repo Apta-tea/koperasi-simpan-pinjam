@@ -4,7 +4,7 @@
 <div class="row">
 <div class="col-sm-12">
     <table class='table table-bordered table-responsive-sm'>
-        <tr><th colspan="2" class="text-center">NASABAH</th></tr>
+        <tr><th colspan="2" class="text-center">ANGSURAN NASABAH</th></tr>
         <tr><td width="200">Nama</td><td>{{ $angsuran[0]->nama_lengkap }}</td></tr>
         <tr><td>Nomor Rekening</td><td>{{ $angsuran[0]->no_rekening }}</td></tr>
         <tr><td colspan="2">

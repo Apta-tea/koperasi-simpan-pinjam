@@ -7,7 +7,7 @@
         <tr><th colspan="3" class="text-center">NASABAH</th></tr>
         <tr><td width="200">Nama</td><td>{{ $nasabah->nama_lengkap }}</td><td rowspan="3"><img src="{{ asset('foto').'/'.$nasabah->foto }}" width="100"></td></tr>
         <tr><td>Nomor Rekening</td><td>{{ $nasabah->no_rekening }}</td></tr>
-        <tr><td>Telepon</td><td>{{ $nasabah->tlp }}</td></tr>
+        <tr><td>Telepon</td><td>{{ $nasabah->telp }}</td></tr>
         <tr><td>Total Saldo</td><td>{{ number_format($nasabah->saldo_akhir) }}</td><td class="text-center">
         {!! Form::open(array('url'=>'laporan/transNas')) !!}
         {!! Form::hidden('nasabah_id',$nasabah->id) !!}
