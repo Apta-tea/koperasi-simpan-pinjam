@@ -16,7 +16,7 @@ use App\Http\Controllers\PinjamanController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.auth-login');
 });
 
 Route::get('dashboard',['middleware'=>'auth', function () {
