@@ -7,6 +7,7 @@ use App\Models\User;
 use Session;
 use Exception;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -68,6 +69,13 @@ class HomeController extends Controller
             Session::flash('pesan',$pesan);
             return redirect ('operator');           
         
+    }
+
+    public function logout(Request $request)
+    {
+       $request->session()->flush();
+       Auth::logout();
+       return Redirect('login');
     }
 
 }

@@ -20,8 +20,10 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard',['middleware'=>'auth', function () {
-    return view('Dashboard');
+    return view('Dashboard-0');
 }]);
+
+Route::get('logout', [App\Http\Controllers\HomeController::class,'logout']);
 
 Route::resource('nasabah', NasabahController::class);
 

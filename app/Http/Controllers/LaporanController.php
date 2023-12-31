@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use setasign\fpdf\FPDF;
+use \setasign\fpdf\FPDF;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TransExport;
@@ -171,6 +171,6 @@ function Footer()
     $this->SetFont('Times','I',8);
     // Page number
     $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'R');
-}
+} 
     
 }
