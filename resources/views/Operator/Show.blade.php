@@ -1,11 +1,15 @@
-@extends('Template')
-@section('content') 
+@extends('Template-0')
+@section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>DATA OPERATOR</h1>
+          </div>
 {!! Html::ul($errors->all()) !!}
 <br>
-{!! Form::button('+Tambah Data',['class'=>'btn btn-danger btn-sm','data-bs-toggle'=>'modal', 'data-bs-target'=>'#user']) !!}
+{!! Form::button('+Tambah Data',['class'=>'btn btn-danger btn-sm','data-toggle'=>'modal', 'data-target'=>'#user']) !!}
 <br><br>
 <table class="table table-bordered" >
-    <tr><th colspan="7" class="text-center">DATA OPERATOR</th></tr>
     <tr><th>Tanggal Input</th><th>Nama</th><th>E-mail</th><th colspan="2"></th></tr>
     @isset($user)
     @foreach($user as $u)
@@ -25,7 +29,9 @@
     @endisset
     </tr>
 </table>
-<div class="modal fade" id="user" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+</section>
+</div>
+<div class="modal fade" id="user" role="dialog" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -41,7 +47,7 @@
         </table>        
       </div>
       <div class="modal-footer">
-        {!! Form::button('Close',['class'=>'btn btn-secondary btn-sm','data-bs-dismiss'=>'modal']) !!}
+        {!! Form::button('Close',['class'=>'btn btn-secondary btn-sm','data-dismiss'=>'modal']) !!}
         {!! Form::submit('Simpan Data',['class'=>'btn btn-danger btn-sm']) !!}
       </div>
       {!! Form::close() !!}

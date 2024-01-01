@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard',['middleware'=>'auth', function () {
-    return view('Dashboard-0');
+    return view('Dashboard');
 }]);
 
 Route::get('logout', [App\Http\Controllers\HomeController::class,'logout']);

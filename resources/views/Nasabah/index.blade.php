@@ -1,5 +1,10 @@
-@extends('Template')
-@section('content') 
+@extends('Template-0')
+@section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>DATA NASABAH</h1>
+          </div> 
 {!! Html::ul($errors->all()) !!}
     <div class="row justify-content-end">
     <div class="col-4">
@@ -12,7 +17,7 @@
 {!! link_to('nasabah/create','+Tambah Data',['class'=>'btn btn-danger btn-sm']) !!}
 <br><br>
 <table class="table table-bordered table-responsive-sm" >
-    <tr><th colspan="6" class="text-center">DATA NASABAH</th></tr>
+    <!-- <tr><th colspan="6" class="text-center">DATA NASABAH</th></tr> -->
     <tr><th>Nomor Rekening</th><th>Nama</th><th>Telepon</th><th>Alamat</th><th colspan="2"></th></tr>
     @isset($nasabah)
     @foreach($nasabah as $n)
@@ -35,4 +40,6 @@
 @endif
 {!! $nasabah->render() !!}
 @endisset
+</section>
+</div>
 @stop

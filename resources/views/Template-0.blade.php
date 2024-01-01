@@ -30,15 +30,12 @@
           </ul>        
           <ul class="navbar-nav ml-auto">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <img alt="image" src="{{ asset('/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+            <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.html" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-activities.html" class="dropdown-item has-icon">
-                <i class="fas fa-bolt"></i> Activities
               </a>
               <a href="features-settings.html" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Settings
@@ -60,25 +57,38 @@
             <a href="{{ url('dashboard') }}">KSP</a>
           </div>
           <ul class="sidebar-menu">
-              <li class="menu-header">Dashboard</li>
-              <li class="nav-item dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <li class="menu-header">Administrator</li>
+              @php
+                $menu_open = '';
+                if (str_contains(Request::url(),'operator')) 
+                {$menu_open = 'dropdown active';}
+		          @endphp
+              <li class="nav-item {{ $menu_open }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-cog"></i><span>Admin</span></a>
                 <ul class="dropdown-menu">
-                  <li class="active"><a class="nav-link" href="index-0.html">General Dashboard</a></li>
-                  <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+                  <li class="@if($menu_open=='dropdown active')active @endif"><a class="nav-link" href="{{ route('operator') }}">Operator</a></li>
                 </ul>
               </li>
-              <li class="menu-header">Starter</li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+              <li class="menu-header">Nasabah</li>
+              <li class="@if(str_contains(Request::url(),'nasabah'))active @endif"><a class="nav-link" href="{{ url('nasabah') }}"><i class="fas fa-user-friends"></i> <span>Nasabah</span></a></li>
+              <li class="menu-header">Pinjaman</li>
+              <li class="@if(str_contains(Request::url(),'pinjaman'))active @endif"><a class="nav-link" href="{{ url('pinjaman') }}"><i class="fas fa-dollar-sign"></i> <span>Pinjaman</span></a></li>
+              <li class="menu-header">Administrasi</li>
+              @php
+                $menu_open = '';
+                if (str_contains(Request::url(),'shu') || str_contains(Request::url(),'ttp_buku') || str_contains(Request::url(),'lapxls')) 
+                {$menu_open = 'dropdown active';}
+		          @endphp
+              <li class="nav-item {{ $menu_open }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-id-card"></i> <span>Pengurus</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
-                  <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-                  <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
+                  <li class="@if(str_contains(Request::url(),'shu'))active @endif"><a class="nav-link" href="{{ url('shu') }}">Sisa Hasil Usaha</a></li>
+                  <li class="@if(str_contains(Request::url(),'ttp_buku'))active @endif"><a class="nav-link" href="{{ url('shu/ttp_buku') }}">Tutup Buku</a></li>
+                  <li class="@if(str_contains(Request::url(),'lapxls'))active @endif"><a class="nav-link" href="{{ url('laporan/lapxls') }}">Laporan Transaksi</a></li>
                 </ul>
-              </li>              
+              </li>             
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-              <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
+              <a href="https://github.com/Apta-tea/koperasi-simpan-pinjam" class="btn btn-primary btn-lg btn-block btn-icon-split" target=_blank>
                 <i class="fas fa-rocket"></i> Documentation
               </a>
             </div>
@@ -86,88 +96,11 @@
       </div>
 
       <!-- Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>Dashboard</h1>
-          </div>
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
-                  <i class="far fa-user"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Total Admin</h4>
-                  </div>
-                  <div class="card-body">
-                    10
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
-                  <i class="far fa-newspaper"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>News</h4>
-                  </div>
-                  <div class="card-body">
-                    42
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Reports</h4>
-                  </div>
-                  <div class="card-body">
-                    1,201
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-circle"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Online Users</h4>
-                  </div>
-                  <div class="card-body">
-                    47
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Chart section -->
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-              <div class="card">
-                <div class="card-body">
-                  <canvas id="myChart" height="182"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>         
-        </section>
-      </div>
+      @yield('content')
+      
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; 2023 <div class="bullet"></div>  <a href="#">Koperasi Simpan Pinjam</a>
+          Copyright &copy; {{ now()->year }} <div class="bullet"></div>  <a href="#">Koperasi Simpan Pinjam</a>
         </div>
         <div class="footer-right">
           2.0.0
@@ -188,7 +121,7 @@
   <script src="{{ asset('/assets/node_modules/simpleweather/jquery.simpleWeather.min.js') }}"></script>
   <script src="{{ asset('/assets/node_modules/chart/Chart.min.js') }}"></script>
   <script src="{{ asset('/assets/node_modules/jqvmap/jquery.vmap.min.js') }}"></script>
-  <script src="{{ asset('/assets/node_modules/jqvmap/jquery.vmap.indonesia.js') }}"></script>
+  <script src="{{ asset('/assets/node_modules/jqvmap/jquery.vmap.world.js') }}"></script>
 
   <!-- Template JS File -->
   <script src="{{ asset('/assets/js/scripts.js') }}"></script>
