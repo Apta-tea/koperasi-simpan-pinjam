@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Nasabah;
 use Session;
 use Exception;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +29,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('Dashboard');
+        $chart = \DB::table('chart')->get();
+        $data['credit'] = $chart->pluck('total');
+        $data['month'] = $chart->pluck('Month');
+        $data['juser'] = User::all()->count();
+        $data['jnasabah'] = Nasabah::all()->count();
+        $data['kas'] = \DB::table('sisa_kas')->first();
+        $data['tot_pinjam'] = \DB::table('tot_pinjam')->first();
+        return view('Dashboard',$data);
     }
 
     public function operator()

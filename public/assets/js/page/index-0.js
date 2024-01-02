@@ -1,14 +1,15 @@
 "use strict";
 
+
 var statistics_chart = document.getElementById("myChart").getContext('2d');
 
 var myChart = new Chart(statistics_chart, {
   type: 'line',
   data: {
-    labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    labels: month,
     datasets: [{
-      label: 'Statistics',
-      data: [640, 387, 530, 302, 430, 270, 488],
+      label: 'Tabungan',
+      data: total,
       borderWidth: 5,
       borderColor: '#6777ef',
       backgroundColor: 'transparent',
@@ -28,7 +29,7 @@ var myChart = new Chart(statistics_chart, {
           drawBorder: false,
         },
         ticks: {
-          stepSize: 150
+          stepSize: 50000
         }
       }],
       xAxes: [{
@@ -39,7 +40,8 @@ var myChart = new Chart(statistics_chart, {
       }]
     },
   }
-});
+}); 
+
 
 $('#visitorMap').vectorMap(
 {

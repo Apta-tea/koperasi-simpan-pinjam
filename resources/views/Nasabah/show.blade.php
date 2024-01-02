@@ -1,10 +1,17 @@
-@extends('Template')
+@extends('Template-0')
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>NASABAH</h1>
+          </div> 
 {!! Html::ul($errors->all()) !!}
+{!! link_to('nasabah','List',['class'=>'fas fa-long-arrow-alt-left']) !!}
+<br\>
 <div class="row">
 <div class="col-sm-6">
     <table class='table table-bordered table-responsive-sm'>
-        <tr><th colspan="3" class="text-center">NASABAH</th></tr>
+        <!-- <tr><th colspan="3" class="text-center">NASABAH</th></tr> -->
         <tr><td width="200">Nama</td><td>{{ $nasabah->nama_lengkap }}</td><td rowspan="3"><img src="{{ asset('foto').'/'.$nasabah->foto }}" width="100"></td></tr>
         <tr><td>Nomor Rekening</td><td>{{ $nasabah->no_rekening }}</td></tr>
         <tr><td>Telepon</td><td>{{ $nasabah->telp }}</td></tr>
@@ -47,4 +54,6 @@
 </div>
 {!! $transaksi->render() !!}
 @endisset
+</section>
+</div>
 @stop

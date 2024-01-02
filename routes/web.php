@@ -19,9 +19,9 @@ Route::get('/', function () {
     return view('auth.auth-login');
 });
 
-Route::get('dashboard',['middleware'=>'auth', function () {
+/* Route::get('dashboard',['middleware'=>'auth', function () {
     return view('Dashboard');
-}]);
+}]); */
 
 Route::get('logout', [App\Http\Controllers\HomeController::class,'logout']);
 
@@ -31,7 +31,7 @@ Route::post('nasabah/search', [NasabahController::class,'search']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 Route::post('nasabah/transaksi', [NasabahController::class,'transaksi']);
 

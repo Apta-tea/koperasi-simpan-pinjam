@@ -16,7 +16,7 @@
     <tr><td>{{ tgl_id($u->created_at) }}</td><td>{{ $u->name }}</td><td>{{ $u->email }}</td>
     <td class="text-center" colspan="2" width="50">
         {!! Form::open(array('url'=>'delete_user/'.$u->id,'method'=>'delete')) !!}
-        {!! Form::submit('Delete',['class'=>'btn btn-danger btn-sm',"onclick"=>"return confirm('Anda yakin?')"]) !!}
+        {!! Form::button('<i class="fas fa-trash-alt" style="white"></i> Delete',['type'=>'submit','class'=>'btn btn-danger btn-sm',"onclick"=>"return confirm('Anda yakin?')"]) !!}
         {!! Form::close() !!}
     </td>
     @endforeach

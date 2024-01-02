@@ -13,10 +13,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Admin</h4>
+                    <h4>Total Nasabah</h4>
                   </div>
                   <div class="card-body">
-                    10
+                    {{ $jnasabah }}
                   </div>
                 </div>
               </div>
@@ -28,10 +28,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Kas Tersedia</h4>
                   </div>
                   <div class="card-body">
-                    42
+                  Rp. {{ number_format($kas->total) }}
                   </div>
                 </div>
               </div>
@@ -43,10 +43,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>Dana Dipinjam</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                  Rp. {{ number_format($tot_pinjam->total) }}
                   </div>
                 </div>
               </div>
@@ -58,10 +58,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Online Users</h4>
+                    <h4>Operator</h4>
                   </div>
                   <div class="card-body">
-                    47
+                    {{ $juser }}
                   </div>
                 </div>
               </div>
@@ -79,4 +79,8 @@
           </div>         
         </section>
       </div>
+<script>
+  const total = {!! json_encode($credit) !!};
+  const month = {!! json_encode($month) !!};
+</script>
 @stop

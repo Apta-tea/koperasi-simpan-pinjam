@@ -1,5 +1,10 @@
-@extends('Template')
+@extends('Template-0')
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>TAMBAH NASABAH</h1>
+          </div> 
 {!! Html::ul($errors->all()) !!}
 {!! Form::open(array('url'=>'nasabah', 'files'=>'true')) !!}
     <table class='table table-bordered table-responsive-sm'>
@@ -14,5 +19,6 @@
         </td></tr>
     </table>
 {!! Form::close() !!}
-
+</section>
+</div>
 @stop

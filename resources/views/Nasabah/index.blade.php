@@ -22,11 +22,12 @@
     @isset($nasabah)
     @foreach($nasabah as $n)
     <tr><td>{{ $n->no_rekening }}</td><td>{{ $n->nama_lengkap }}</td><td>{{ $n->telp }}</td><td>{{ $n->alamat }}</td>
-    <td width="120" class="border-end-0">{!! link_to('nasabah/'.$n->id.'/edit','Edit',['class'=>'btn btn-primary btn-sm']) !!}
-        {!! link_to('nasabah/'.$n->id,'Detail',['class'=>'btn btn-secondary btn-sm']) !!}
-    <td width="40" class="border-start-0">
+    <td width="120" class="border-end-0">
+        {!! link_to('nasabah/'.$n->id,'',['class'=>'fas fa-eye']) !!}
+        {!! link_to('nasabah/'.$n->id.'/edit','',['class'=>'fas fa-edit']) !!}
+     <!-- <td width="5" class="border-start-0 text-left">  -->
         {!! Form::open(array('url'=>'nasabah/'.$n->id,'method'=>'delete')) !!}
-        {!! Form::submit('Delete',['class'=>'btn btn-warning btn-sm',"onclick"=>"return confirm('Anda yakin?')"]) !!}
+        {{ Form::button('<i class="fas fa-trash-alt" style="color:#6777ef"></i>',['class'=>'btn btn-flat','type'=>'submit','role'=>'button',"onclick"=>"return confirm('Anda yakin?')"]) }}
         {!! Form::close() !!}
     </td>
     @endforeach

@@ -27,7 +27,7 @@ class NasabahController extends Controller
     public function index()
     {
         //
-        $data['nasabah'] = Nasabah::paginate(5);
+        $data['nasabah'] = Nasabah::paginate(10);
         return view('Nasabah.index',$data);
     }
 
@@ -106,6 +106,7 @@ class NasabahController extends Controller
                             ->join('users','users.id','=','transaksis.user_id')
                             ->where('transaksis.nasabah_id','=',$id)
                             ->select('transaksis.*','users.name')
+                            ->orderBy('transaksis.id', 'desc')
                             ->paginate(10);
         $data['nasabah'] = Nasabah::find($id);
         return view('Nasabah.show',$data);

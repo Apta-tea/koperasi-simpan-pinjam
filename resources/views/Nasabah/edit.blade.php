@@ -1,5 +1,10 @@
-@extends('Template')
+@extends('Template-0')
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>UPDATE NASABAH</h1>
+          </div> 
 {!! Html::ul($errors->all()) !!}
 {!! Form::model($nasabah,array('url'=>'nasabah/'.$nasabah->id,'method'=>'patch')) !!}
     <table class='table table-bordered table-responsive-sm'>
@@ -13,5 +18,6 @@
         </td></tr>
     </table>
 {!! Form::close() !!}
-
+</section>
+</div>
 @stop
