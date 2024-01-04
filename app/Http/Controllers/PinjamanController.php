@@ -155,7 +155,7 @@ class PinjamanController extends Controller
     {
         //
         $search = $request['keyword'];
-        $data['pinjaman'] = Pinjaman::where('nama_lengkap','LIKE',"%{$search}%")->paginate(5);
+        $data['pinjaman'] = Pinjaman::where('nama_lengkap','LIKE',"%{$search}%")->where('status','1')->paginate(5);
         $data['kas'] = \DB::table('sisa_kas')->first();
         $data['tot_pinjam'] = \DB::table('tot_pinjam')->first();
         return view('Pinjaman.index',$data);

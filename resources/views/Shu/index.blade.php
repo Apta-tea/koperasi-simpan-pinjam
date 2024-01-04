@@ -1,5 +1,10 @@
-@extends('Template')
+@extends('Template-0')
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Sisa Hasil Usaha</h1>
+          </div> 
 {!! Html::ul($errors->all()) !!}
 <div class="row">
 <div class="col-sm-12">
@@ -28,18 +33,18 @@
         {!! Form::open(array('url'=>'shu/proc')) !!}
         {!! Form::text('operasional','',['class'=>'form-control','placeholder'=>'0','required']) !!}
         <tr><td>Persentase SHU (%)</td><td>
-        {!! Form::text('shu','',['class'=>'form-control','placeholder'=>'Masukan presentase bagi hasil yang diinginkan, atau kosongkan untuk otomatis kalkulasi']) !!}
+        {!! Form::text('shu','',['class'=>'form-control','placeholder'=>'Masukan presentase bagi hasil, atau kosongkan untuk otomatis kalkulasi']) !!}
         {!! Form::hidden('laba',max($laba->laba,0)) !!}
         {!! Form::hidden('jnasabah',$jnasabah) !!}
         {!! Form::hidden('simpanan',$saldo->saldo) !!}
-        </td></tr><tr><td colspan="2">
-        {!! Form::submit('Proses',['class'=>'btn btn-success btn-sm float-end',"onclick"=>"return confirm('Anda yakin?')"]) !!}
+        </td></tr><tr><td colspan="2" class="text-right">
+        {!! Form::button('<i class="fas fa-chart-line"></i> Proses',['type'=>'submit','class'=>'btn btn-success btn-sm float-end',"onclick"=>"return confirm('Anda yakin?')"]) !!}
         {!! Form::close() !!}
         </td></tr>
     </table>
 </div>
 </div>
-<div class="navbar navbar-inverse navbar-fixed-bottom">
+<!-- <div class="navbar navbar-inverse navbar-fixed-bottom"> -->
       <div class="container">
         <ul>
         <li>Total SHU yang dibagikan pada semua anggota merupakan total laba setelah dikurangi biaya operasional.</li>
@@ -47,5 +52,7 @@
         <li>Input manual presentase merupakan APR dari simpanan.</li>
         </ul>
       </div>
+<!-- </div> -->
+</section>
 </div>
 @stop

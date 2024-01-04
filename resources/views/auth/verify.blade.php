@@ -1,11 +1,15 @@
 @extends('layouts.app')
-
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Verify Your Email</h1>
+          </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <!-- <div class="card-header">{{ __('Verify Your Email Address') }}</div> -->
 
                 <div class="card-body">
                     @if (session('resent'))
@@ -24,5 +28,7 @@
             </div>
         </div>
     </div>
+</div>
+</section>
 </div>
 @endsection

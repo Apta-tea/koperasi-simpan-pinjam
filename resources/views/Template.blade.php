@@ -79,43 +79,43 @@
     
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ url('dashboard') }}">MINI-KSP</a>
+    <a class="navbar-brand" href="{{ url('dashboard') }}">Koperasi Simpan Pinjam</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ url('home') }}">Home</a>
+          <a class="nav-link" aria-current="page" href="#"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('nasabah') }}">Nasabah</a>
+          <a class="nav-link" href="#"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('pinjaman') }}">Pinjaman</a>
+          <a class="nav-link" href="#"></a>
         </li>
-        <li class="nav-item dropdown">
+       <!--  <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Pengurus</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="{{ url('shu') }}">Sisa Hasil Usaha</a></li>
-              <li><a class="dropdown-item" href="{{ url('shu/ttp_buku') }}">Tutup Buku</a></li>
-              <!-- <li><a class="dropdown-item" target="_blank" href="{{ url('laporan/lappdf') }}">Laporan Transaksi</a></li> -->
-              <li><a class="dropdown-item" href="{{ url('laporan/lapxls') }}">Laporan Transaksi</a></li>
+              <li><a class="dropdown-item" href="#">Sisa Hasil Usaha</a></li>
+              <li><a class="dropdown-item" href="#">Tutup Buku</a></li>
+              <li><a class="dropdown-item" target="_blank" href="#">Laporan Transaksi</a></li>
+              <li><a class="dropdown-item" href="#">Laporan Transaksi</a></li>
             </ul>
-          </li>
-      </ul>
+          </li> -->
+      </ul> 
       <div class="navbar-nav"> 
           <div class="nav-item text-nowrap">
           <a class="fa-regular fa-user nav-link px-0"></a>
           </div>                              
           <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="#">{{ Auth::user()->name }}</a>
+          <a class="nav-link px-3" href="#"></a>
           </div>
           <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="{{ route('operator') }}">{{ __('Operator') }}</a>
+            <a class="nav-link px-3" href="#"></a>
           </div> 
           <div class="nav-item text-nowrap">
-          {!! Form::open(array('url'=>'logout')) !!}
+          {!! Form::open(array('url'=>'#')) !!}
           <!-- <a class="nav-link px-3" href="#">Sign out</a> -->
           {!! Form::submit('Logout',['class'=>'btn btn-link nav-link px-3']) !!}
           {!! Form::close() !!}

@@ -14,8 +14,8 @@
         <tr><td>Alamat</td><td>{!! Form::textarea('alamat','',['class'=>'form-control','required']) !!}</td></tr>
         <tr><td>Foto</td><td>{!! Form::file('foto',null,['class'=>'form-control']) !!} </td></tr>
         <tr><td colspan=2>
-            {!! Form::submit('Simpan Data',['class'=>'btn btn-danger btn-sm']) !!}
-            {!! link_to('nasabah','Kembali',['class'=>'btn btn-danger btn-sm']) !!}
+            {!! Form::button('<i class="fas fa-save"></i> Simpan Data',['type'=>'submit','class'=>'btn btn-danger btn-sm']) !!}
+            {!! link_to('nasabah',' Kembali',['class'=>'btn btn-warning btn-sm fas fa-undo']) !!}
         </td></tr>
     </table>
 {!! Form::close() !!}

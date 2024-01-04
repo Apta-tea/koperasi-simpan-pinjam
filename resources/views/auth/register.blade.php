@@ -1,11 +1,15 @@
-@extends('Template')
-
+@extends('Template-0')
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Register</h1>
+          </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <!-- <div class="card-header">{{ __('Register') }}</div> -->
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -73,5 +77,7 @@
             </div>
         </div>
     </div>
+</div>
+</section>
 </div>
 @endsection

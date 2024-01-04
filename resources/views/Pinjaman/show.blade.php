@@ -1,16 +1,21 @@
-@extends('Template')
+@extends('Template-0')
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Angsuran Nasabah</h1>
+          </div> 
 {!! Html::ul($errors->all()) !!}
 <div class="row">
 <div class="col-sm-12">
     <table class='table table-bordered table-responsive-sm'>
-        <tr><th colspan="2" class="text-center">ANGSURAN NASABAH</th></tr>
+        <!-- <tr><th colspan="2" class="text-center">ANGSURAN NASABAH</th></tr> -->
         <tr><td width="200">Nama</td><td>{{ $angsuran[0]->nama_lengkap }}</td></tr>
         <tr><td>Nomor Rekening</td><td>{{ $angsuran[0]->no_rekening }}</td></tr>
         <tr><td colspan="2">
         {!! Form::open(array('url'=>'laporan/pinjNas')) !!}
         {!! Form::hidden('pinjaman_id',$angsuran[0]->pinjaman_id) !!}
-        {!! Form::submit('Laporan',['class'=>'btn btn-primary btn-sm','formtarget'=>'_blank']) !!}
+        {!! Form::button('<i class="fas fa-clipboard"></i> Laporan',['type'=>'submit','class'=>'btn btn-primary btn-sm','formtarget'=>'_blank']) !!}
         {!! Form::close() !!}
         </td></tr>
     </table>
@@ -38,7 +43,7 @@
         {!! Form::hidden('jumlah_cicilan',$a->jumlah_cicilan) !!}
         {!! Form::hidden('pinjaman_id',$a->pinjaman_id) !!}
         {!! Form::hidden('angsuran_id',$a->id) !!}
-        {!! Form::submit('Angsur',['class'=>'btn btn-success btn-sm',"onclick"=>"return confirm('Anda yakin?')"]) !!}
+        {!! Form::button('<i class="fas fa-money-check"></i> Angsur',['type'=>'submit','class'=>'btn btn-success btn-sm',"onclick"=>"return confirm('Anda yakin?')"]) !!}
         {!! Form::close() !!}
         </td></tr>
         @php
@@ -47,5 +52,7 @@
         @endforeach
     </table>
 </div>
+</div>
+</section>
 </div>
 @stop

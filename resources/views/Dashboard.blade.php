@@ -9,7 +9,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">
-                  <i class="far fa-user"></i>
+                  <i class="fas fa-users"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -39,7 +39,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
+                  <i class="far fa-money-bill-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -54,7 +54,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-id-card"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -72,7 +72,7 @@
             <div class="col-lg-12 col-md-12 col-12 col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <canvas id="myChart" height="182"></canvas>
+                  <canvas id="myChart" height="150"></canvas>
                 </div>
               </div>
             </div>

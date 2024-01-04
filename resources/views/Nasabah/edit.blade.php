@@ -13,8 +13,8 @@
         <tr><td>Telp/ HP</td><td>{!! Form::text('telp',null,['class'=>'form-control']) !!}</td></tr>
         <tr><td>Alamat</td><td>{!! Form::textarea('alamat',null,['class'=>'form-control']) !!}</td></tr>
         <tr><td colspan=2>
-            {!! Form::submit('Update Data',['class'=>'btn btn-danger btn-sm']) !!}
-            {!! link_to('nasabah','Kembali',['class'=>'btn btn-danger btn-sm']) !!}
+            {!! Form::button('<i class="fas fa-pen"></i> Update Data',['type'=>'submit','class'=>'btn btn-danger btn-sm']) !!}
+            {!! link_to('nasabah',' Kembali',['class'=>'btn btn-warning btn-sm fas fa-undo']) !!}
         </td></tr>
     </table>
 {!! Form::close() !!}

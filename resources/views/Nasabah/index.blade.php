@@ -10,7 +10,7 @@
     <div class="col-4">
     {!! Form::open(array('url'=>'nasabah/search','class'=>'d-flex','role'=>'search')) !!}
     {!! Form::text('keyword',null,['class'=>'form-control me-2','placeholder'=>'Search']) !!}
-    {!! Form::submit('Search',['class'=>'btn btn-outline-success']) !!}
+    {!! Form::button('<i class="fas fa-search"></i>',['type'=>'submit','class'=>'btn btn-flat']) !!}
     {!! Form::close() !!}
     </div></div>
 <br>

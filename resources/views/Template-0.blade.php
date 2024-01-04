@@ -6,8 +6,9 @@
   <title>Dashboard &mdash; KSP</title>
 
   <!-- General CSS Files -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> 
+
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="{{ asset('assets/node_modules/jqvmap/jqvmap.min.css') }}">
@@ -16,13 +17,17 @@
   <link rel="stylesheet" href="{{ asset('assets/node_modules/summernote/summernote-bs4.css') }}">
 
   <!-- Template CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+  <script src="{{ asset('/assets/dist/js/jquery-3.6.0.min.js') }}"></script>
 </head>
 
 <body>
   <div id="app">
     <div class="main-wrapper">
+
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
           <ul class="navbar-nav mr-3">
@@ -33,11 +38,11 @@
             <img alt="image" src="{{ asset('/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <!-- <div class="dropdown-title">Logged in 5 min ago</div> -->
+            <!--   <a href="features-profile.html" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
+              </a> -->
+              <a href="{{ route('operator') }}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
@@ -50,6 +55,16 @@
       </nav>
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
+          <div class="text-center">
+          @php
+				  $profile = \App\Models\Profile::where('status','active')->first(); 
+				  @endphp
+          @if (!empty($profile->file_logo) && File::exists(public_path().'/assets/'.$profile->file_logo))
+          <img class="logo" src="{{ asset('/foto/'.$profile->file_logo) }}" alt="Desktop Logo">
+          @else
+          <img class="logo" src="{{ asset('/foto/no_image.jpg') }}" alt="Desktop Logo">
+          @endif
+          </div>
           <div class="sidebar-brand">
             <a href="{{ url('dashboard') }}">Koperasi Simpan Pinjam</a>
           </div>
@@ -60,13 +75,14 @@
               <li class="menu-header">Administrator</li>
               @php
                 $menu_open = '';
-                if (str_contains(Request::url(),'operator')) 
+                if (str_contains(Request::url(),'operator') || str_contains(Request::url(),'profile')) 
                 {$menu_open = 'dropdown active';}
 		          @endphp
               <li class="nav-item {{ $menu_open }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-cog"></i><span>Admin</span></a>
                 <ul class="dropdown-menu">
-                  <li class="@if($menu_open=='dropdown active')active @endif"><a class="nav-link" href="{{ route('operator') }}">Operator</a></li>
+                  <li class="@if(str_contains(Request::url(),'profile'))active @endif"><a class="nav-link" href="{{ route('profile') }}">Profil</a></li>
+                  <li class="@if(str_contains(Request::url(),'operator'))active @endif"><a class="nav-link" href="{{ route('operator') }}">Operator</a></li>
                 </ul>
               </li>
               <li class="menu-header">Nasabah</li>
@@ -110,11 +126,11 @@
   </div>
 
   <!-- General JS Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('/assets/js/stisla.js') }}"></script>
 
   <!-- JS Libraies -->

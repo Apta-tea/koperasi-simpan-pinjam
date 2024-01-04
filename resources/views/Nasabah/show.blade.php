@@ -18,7 +18,7 @@
         <tr><td>Total Saldo</td><td>{{ number_format($nasabah->saldo_akhir) }}</td><td class="text-center">
         {!! Form::open(array('url'=>'laporan/transNas')) !!}
         {!! Form::hidden('nasabah_id',$nasabah->id) !!}
-        {!! Form::submit('Laporan',['class'=>'btn btn-success btn-sm','formtarget'=>'_blank']) !!}
+        {!! Form::button('<i class="fas fa-print"></i> Laporan',['type'=>'submit','class'=>'btn btn-success btn-sm','formtarget'=>'_blank']) !!}
         {!! Form::close() !!}
         </td></tr>
     </table>
@@ -30,7 +30,7 @@
         <tr><th colspan="2" class="text-center">FORM TRANSAKSI</th></tr>
         <tr><td width="200">Jumlah</td><td>{!! Form::text('total',null,['class'=>'form-control','required']) !!}</td></tr>
         <tr><td>Jenis Transaksi</td><td>{!! Form::select('jenis_transaksi',array('debet'=>'DEBET','wajib'=>'SIMPANAN WAJIB','sukarela'=>'SIMPANAN SUKARELA','denda'=>'DENDA'),['class'=>'form-control']) !!}</td></tr>
-        <tr><td colspan="2">{!! Form::submit('Proses',['class'=>'btn btn-danger btn-sm float-end']) !!}</td></tr>
+        <tr><td colspan="2" class="text-right">{!! Form::button('<i class="fas fa-cash-register"></i> Proses',['type'=>'submit','class'=>'btn btn-danger btn-sm float-end']) !!}</td></tr>
     </table>
     {!! Form::close() !!}
 </div>

@@ -62,3 +62,6 @@ Route::post('adduser', [App\Http\Controllers\HomeController::class,'create']);
 Route::post('laporan/transNas',[App\Http\Controllers\LaporanController::class,'transNas']);
 
 Route::post('laporan/pinjNas',[App\Http\Controllers\LaporanController::class,'pinjNas']);
+
+Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+

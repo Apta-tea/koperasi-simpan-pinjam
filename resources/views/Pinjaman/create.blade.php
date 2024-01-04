@@ -1,5 +1,10 @@
-@extends('Template')
+@extends('Template-0')
 @section('content')
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Aplikasi Pinjaman</h1>
+          </div> 
 {!! Html::ul($errors->all()) !!}
 {!! Form::open(array('url'=>'pinjaman')) !!}
     <table class='table table-bordered table-responsive-sm'>
@@ -11,12 +16,13 @@
         <tr><td>Presentase Bagi Hasil (%)</td><td>{!! Form::text('persen','',['class'=>'form-control','placeholder'=>'2.5','maxlength'=>'3','required']) !!}</td></tr>
         <tr><td>Skema Angsuran</td><td>{!! Form::select('skema',array('flat'=>'Flat','nflat'=>'Non Flat'),['class'=>'form-control']) !!}</td></tr>
         <tr><td colspan=2>
-            {!! Form::submit('Simpan Data',['class'=>'btn btn-danger btn-sm']) !!}
-            {!! link_to('pinjaman','Kembali',['class'=>'btn btn-danger btn-sm']) !!}
+            {!! Form::button('<i class="fas fa-save"></i> Simpan Data',['type'=>'submit','class'=>'btn btn-danger btn-sm']) !!}
+            {!! link_to('pinjaman',' Kembali',['class'=>'btn btn-warning btn-sm fas fa-undo']) !!}
         </td></tr>
     </table>
 {!! Form::close() !!}
-
+</section> 
+</div> 
 <script type="text/javascript">
  $(document).ready(function() {
             
