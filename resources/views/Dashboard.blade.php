@@ -1,5 +1,6 @@
 @extends('Template-0')
 @section('content')
+@if (!empty($jnasabah && $kas && $credit && $month && $juser && $tot_pinjam))
 <div class="main-content">
         <section class="section">
           <div class="section-header">
@@ -83,4 +84,9 @@
   const total = {!! json_encode($credit) !!};
   const month = {!! json_encode($month) !!};
 </script>
+@else
+<div>
+  <h6>Mohon Maaf, Data Tidak Ditemukan</h6> 
+</div>
+@endif
 @stop

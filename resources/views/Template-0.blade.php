@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
   <script src="{{ asset('/assets/dist/js/jquery-3.6.0.min.js') }}"></script>
+  @livewireStyles
 </head>
 
 <body>
@@ -59,8 +60,8 @@
           @php
 				  $profile = \App\Models\Profile::where('status','active')->first(); 
 				  @endphp
-          @if (!empty($profile->file_logo) && File::exists(public_path().'/assets/'.$profile->file_logo))
-          <img class="logo" src="{{ asset('/foto/'.$profile->file_logo) }}" alt="Desktop Logo">
+          @if (!empty($profile->file_logo) && File::exists(public_path().'/storage/foto/'.$profile->file_logo))
+          <img class="logo" src="{{ asset('/storage/foto/'.$profile->file_logo) }}" alt="Desktop Logo">
           @else
           <img class="logo" src="{{ asset('/foto/no_image.jpg') }}" alt="Desktop Logo">
           @endif
@@ -81,7 +82,7 @@
               <li class="nav-item {{ $menu_open }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-cog"></i><span>Admin</span></a>
                 <ul class="dropdown-menu">
-                  <li class="@if(str_contains(Request::url(),'profile'))active @endif"><a class="nav-link" href="{{ route('profile') }}">Profil</a></li>
+                  <li class="@if(str_contains(Request::url(),'profile'))active @endif"><a class="nav-link" href="{{ route('profile') }}">Profile Koperasi</a></li>
                   <li class="@if(str_contains(Request::url(),'operator'))active @endif"><a class="nav-link" href="{{ route('operator') }}">Operator</a></li>
                 </ul>
               </li>
@@ -116,7 +117,12 @@
       
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; {{ now()->year }} <div class="bullet"></div>  <a href="#">Koperasi Simpan Pinjam</a>
+          Copyright &copy; {{ now()->year }} <div class="bullet"></div>  
+          @if (!empty($profile))
+          <a href="#">Koperasi Simpan Pinjam {{ $profile->nama_koperasi }}</a>
+          @else
+          <a href="#">Koperasi Simpan Pinjam</a>
+          @endif
         </div>
         <div class="footer-right">
           2.0.0
@@ -145,5 +151,6 @@
 
   <!-- Page Specific JS File -->
   <script src="{{ asset('/assets/js/page/index-0.js') }}"></script>
+
 </body>
 </html>

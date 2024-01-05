@@ -36,6 +36,7 @@ class HomeController extends Controller
         $data['jnasabah'] = Nasabah::all()->count();
         $data['kas'] = \DB::table('sisa_kas')->first();
         $data['tot_pinjam'] = \DB::table('tot_pinjam')->first();
+        $data['profile'] = \DB::table('profiles')->where('status','active')->first();
         return view('Dashboard',$data);
     }
 

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('kode_pos')->nullable();
             $table->string('telp')->nullable();
             $table->string('file_logo')->nullable();
+            $table->string('badan_hukum')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });

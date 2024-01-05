@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Profile;
 
 class ProfileController extends Controller
 {
@@ -19,6 +20,7 @@ class ProfileController extends Controller
     public function index()
     {
         //
+        return view('Profile.index'); 
     }
 
     /**
@@ -51,6 +53,8 @@ class ProfileController extends Controller
     public function show($id)
     {
         //
+        $data['profile'] = Profile::find($id);
+        return  view('Profile.show',$data);
     }
 
     /**

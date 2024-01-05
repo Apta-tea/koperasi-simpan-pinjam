@@ -65,3 +65,5 @@ Route::post('laporan/pinjNas',[App\Http\Controllers\LaporanController::class,'pi
 
 Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
+Route::get('profile/{profile}', [App\Http\Controllers\ProfileController::class, 'show']);
+
