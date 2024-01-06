@@ -9,7 +9,8 @@
     @include('livewire.profil.create')
     @include('livewire.profil.update')
     <br />
-    <table class="table table-striped table-striped">
+@if(!empty($profile))
+    <table class="table table-striped ">
         <thead>
             <tr>
             <th>Nama Koperasi</th><th>Alamat</th><th>Telephone</th><th>File Logo</th><th>Status</th><th>Action</th>
@@ -22,7 +23,7 @@
         		<td>{{ $data->alamat }}</td>
         		<td>{{ $data->telp }}</td>
                 <td>
-                @if (!empty($data->file_logo) && File::exists(public_path().'/storage/foto/'.$data->file_logo))
+                @if (!empty($data->file_logo) && \File::exists(public_path().'/storage/foto/'.$data->file_logo))
                 <img src="{{ asset('/storage/foto/'.$data->file_logo) }}" class="picture_50x50">
                 @else 
                 <img src="{{ asset('/foto/no_image.jpg') }}" class="picture_50x50">
@@ -37,6 +38,10 @@
         	</tr>
         	@endforeach
         </tbody>
-
     </table>
+@else
+    <div>
+        <h6>Data tidak ditemukan.</h6>
+    </div>
+@endif
 </div>

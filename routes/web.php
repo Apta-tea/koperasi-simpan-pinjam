@@ -55,9 +55,9 @@ Route::post('shu/ttp',[App\Http\Controllers\ShuController::class,'ttp']);
 
 Route::get('operator',[App\Http\Controllers\HomeController::class,'operator'])->name('operator');
 
-Route::delete('delete_user/{home}',[App\Http\Controllers\HomeController::class,'destroy']);
+//Route::delete('delete_user/{home}',[App\Http\Controllers\HomeController::class,'destroy']);
 
-Route::post('adduser', [App\Http\Controllers\HomeController::class,'create']);
+//Route::post('adduser', [App\Http\Controllers\HomeController::class,'create']);
 
 Route::post('laporan/transNas',[App\Http\Controllers\LaporanController::class,'transNas']);
 

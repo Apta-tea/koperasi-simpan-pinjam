@@ -8,6 +8,8 @@ use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TransExport;
 use App\Models\Nasabah;
+use App\Models\Profile;
+
 
 class LaporanController extends Controller
 {
@@ -15,6 +17,7 @@ class LaporanController extends Controller
     public function __construct()
     {
         $this->middleware('check');
+        
     }
 
     public function lapPdf()
@@ -143,19 +146,26 @@ class LaporanController extends Controller
 
 
 }
- 
+
 class pdf extends FPDF
 {
+
     function Header()
     {
+        $logo = Profile::where('status','active')->first();
         // Logo
-        $this->Image(asset('foto').'/'.'member.png',10,6,30);
+        if (!empty($logo->file_logo) && \File::exists(public_path().'/storage/foto/'.$logo->file_logo)){
+            $this->Image(asset('storage/foto').'/'.$logo->file_logo,10,6,30);
+        }else{
+            $this->Image(asset('foto').'/'.'member.png',10,6,30);
+        }
         // Arial bold 15
         $this->SetFont('Times','B',16);
         // Move to the right
         $this->Cell(80);
         // Title
-        $this->Cell(40,10,'KOPERASI MINI-KSP',0,0,'C');
+        $this->Cell(40,10,'KOPERASI SIMPAN PINJAM',0,1,'C');
+        $this->Cell(200,5,$logo->nama_koperasi,0,0,'C');
         // Line break
         $this->Ln(25);
         $this->Cell(190,0,'',1,0,'C');

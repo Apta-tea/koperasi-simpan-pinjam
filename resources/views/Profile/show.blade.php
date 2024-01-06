@@ -35,7 +35,7 @@
     <tr>
 		<td>File Logo</td>
 		<td>
-                @if (!empty($profile->file_logo) && File::exists(public_path().'/storage/foto/'.$profile->file_logo))
+                @if (!empty($profile->file_logo) && \File::exists(public_path().'/storage/foto/'.$profile->file_logo))
                 <img src="{{ asset('/storage/foto/'.$profile->file_logo) }}" class="picture_50x50">
                 @else 
                 <img src="{{ asset('/foto/no_image.jpg') }}" class="picture_50x50">
