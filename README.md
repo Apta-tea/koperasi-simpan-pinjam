@@ -12,7 +12,7 @@ Sistem informasi koperasi simpan pinjam berbasis web versi ke 2 dengan framework
 -   composer update
 -   php artisan key:generate
 -   thats all folks
--   buy me a cup of coffee? https://teer.id/apta-tea
+-   buy me a cup of coffee? [&#9749;](https://teer.id/apta-tea)
 -   any bug, just info me on repo issues
 
 ## License
