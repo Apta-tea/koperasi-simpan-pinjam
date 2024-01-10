@@ -18,9 +18,9 @@ class CreateNasabahSeeder extends Seeder
         \DB::table('nasabahs')->delete();
         //insert dummy record
         \DB::table('nasabahs')->insert(array(
-            array('nama_lengkap'=>'Babe Cabita','alamat'=>'Leuwigajah','no_rekening'=>'12345678','foto'=>'','saldo_akhir'=>'0','telp'=>'','status_pinjaman'=>'0'),
-            array('nama_lengkap'=>'Charlie van houten','alamat'=>'Bandung','no_rekening'=>'13245678','foto'=>'','saldo_akhir'=>'0','telp'=>'','status_pinjaman'=>'0'),
-            array('nama_lengkap'=>'B. Pamungkas','alamat'=>'Cisarua','no_rekening'=>'13425678','foto'=>'','saldo_akhir'=>'0','telp'=>'','status_pinjaman'=>'0'),
+            array('nama_lengkap'=>'Babe Cabita','alamat'=>'Leuwigajah','no_rekening'=>'12345678','foto'=>'','no_ktp'=>'','saldo_akhir'=>'0','telp'=>'','status_pinjaman'=>'0'),
+            array('nama_lengkap'=>'Charlie van houten','alamat'=>'Bandung','no_rekening'=>'13245678','foto'=>'','no_ktp'=>'','saldo_akhir'=>'0','telp'=>'','status_pinjaman'=>'0'),
+            array('nama_lengkap'=>'B. Pamungkas','alamat'=>'Cisarua','no_rekening'=>'13425678','foto'=>'','no_ktp'=>'','saldo_akhir'=>'0','telp'=>'','status_pinjaman'=>'0'),
         ));
 
     }

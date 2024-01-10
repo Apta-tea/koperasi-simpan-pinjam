@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Nasabah extends Model
 {
     use HasFactory;
-    protected $fillable=['nama_lengkap','no_rekening','alamat','telp','foto','saldo_akhir','status_pinjaman'];
+    protected $fillable=['nama_lengkap','no_rekening','alamat','telp','foto','no_ktp','saldo_akhir','status_pinjaman'];
 
     public function trans()
     {

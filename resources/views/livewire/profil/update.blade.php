@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">Edit Data</h5>
+                <h5 class="modal-title" id="createModalLabel">Edit Profile</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -69,8 +69,10 @@
                         @error('status')<span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <button wire:click.prevent="update()" class="btn btn-success">Update</button>
-                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                    <div class="modal-footer">
+                    <button wire:click.prevent="update()" class="btn btn-sm btn-success fas fa-save"> Update</button>
+                    <button type="button" class="btn btn-secondary close-btn btn-sm" data-dismiss="modal">Close</button>
+                    </div>
                 </form>
             </div>
         </div>

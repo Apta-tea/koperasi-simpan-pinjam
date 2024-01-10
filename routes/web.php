@@ -67,3 +67,6 @@ Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index'])-
 
 Route::get('profile/{profile}', [App\Http\Controllers\ProfileController::class, 'show']);
 
+
+
+

@@ -11,4 +11,11 @@
 </section>
 </div>
 @livewireScripts
+<script type="text/javascript">
+  window.livewire.on('nasabahStore', () => {
+    $('#updateModal').modal('hide');
+    $('#detailModal').modal('hide');
+    $('#createModal').modal('hide');
+  });
+</script>
 @stop

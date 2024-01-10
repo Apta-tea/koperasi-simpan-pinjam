@@ -12,6 +12,7 @@
         <tr><td>Nama Lengkap</td><td>{!! Form::text('nama_lengkap','',['class'=>'form-control','required']) !!}</td></tr>
         <tr><td>Telp/ HP</td><td>{!! Form::text('telp','',['class'=>'form-control','required']) !!}</td></tr>
         <tr><td>Alamat</td><td>{!! Form::textarea('alamat','',['class'=>'form-control','required']) !!}</td></tr>
+        <tr><td>No KTP</td><td>{!! Form::text('no_ktp','',['class'=>'form-control','required']) !!}</td></tr>
         <tr><td>Foto</td><td>{!! Form::file('foto',null,['class'=>'form-control']) !!} </td></tr>
         <tr><td colspan=2>
             {!! Form::button('<i class="fas fa-save"></i> Simpan Data',['type'=>'submit','class'=>'btn btn-danger btn-sm']) !!}

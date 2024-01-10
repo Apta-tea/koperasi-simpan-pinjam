@@ -55,11 +55,12 @@ class NasabahController extends Controller
         if (!empty($request->file()))
         {
         $name = $request->file('foto')->getClientOriginalName();
-        $path = $request->file('foto')->move(public_path().'/foto/',$name);
+        $path = $request->file('foto')->move(public_path().'/storage/foto/',$name);
         $data = array(
             'no_rekening'=>$request->no_rekening,
             'nama_lengkap'=>$request->nama_lengkap,
             'alamat'=>$request->alamat,
+            'no_ktp'=>$request->no_ktp,
             'telp'=>$request->telp,
             'foto'=>$name
         );
@@ -68,6 +69,7 @@ class NasabahController extends Controller
                 'no_rekening'=>$request->no_rekening,
                 'nama_lengkap'=>$request->nama_lengkap,
                 'alamat'=>$request->alamat,
+                'no_ktp'=>$request->no_ktp,
                 'telp'=>$request->telp
             );
         }
@@ -206,4 +208,5 @@ class NasabahController extends Controller
         return redirect("nasabah/$request->nasabah_id");
         
     }
+
 }

@@ -7,7 +7,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">Tambah Data</h5>
+                <h5 class="modal-title" id="createModalLabel">Tambah Operator</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -39,8 +39,10 @@
                         @error('password')<span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="modal-footer">
                     <button wire:click.prevent="create()" class="btn btn-sm btn-success fas fa-save"> Save</button>
                     <button type="button" class="btn btn-sm btn-secondary close-btn" data-dismiss="modal">Close</button>
+                    </div>
                 </form>
             </div>
         </div>
