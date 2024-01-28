@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 10, 2024 at 06:56 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Jan 28, 2024 at 06:23 AM
+-- Server version: 10.3.39-MariaDB-0ubuntu0.20.04.2
+-- PHP Version: 8.3.2-1+ubuntu20.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -422,7 +422,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 DROP TABLE IF EXISTS `chart`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `chart`  AS SELECT month(`transaksis`.`created_at`) AS `Month`, sum(`transaksis`.`total`) AS `total` FROM `transaksis` WHERE `transaksis`.`jenis_transaksi` = 'wajib' OR `transaksis`.`jenis_transaksi` = 'sukarela' GROUP BY month(`transaksis`.`created_at`) LIMIT 0, 1212  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `chart`  AS SELECT month(`transaksis`.`created_at`) AS `Month`, sum(`transaksis`.`total`) AS `total` FROM `transaksis` WHERE `transaksis`.`jenis_transaksi` = 'wajib' OR `transaksis`.`jenis_transaksi` = 'sukarela' GROUP BY month(`transaksis`.`created_at`) LIMIT 0, 1212 ;
 
 -- --------------------------------------------------------
 
@@ -431,7 +431,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `kas_keluar`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kas_keluar`  AS SELECT (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'debet' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'operasional' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'pinjaman' and `a`.`status_pembukuan` = '1') AS `total``total`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kas_keluar`  AS SELECT (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'debet' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'operasional' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'pinjaman' and `a`.`status_pembukuan` = '1') AS `total` ;
 
 -- --------------------------------------------------------
 
@@ -440,7 +440,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `kas_masuk`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kas_masuk`  AS SELECT (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'pengembalian' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'shu' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'wajib' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'sukarela' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'denda' and `a`.`status_pembukuan` = '1') AS `total``total`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kas_masuk`  AS SELECT (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'pengembalian' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'shu' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'wajib' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'sukarela' and `a`.`status_pembukuan` = '1') + (select ifnull(sum(`a`.`total`),0) from `general_ledgers` `a` where `a`.`jenis_transaksi` = 'denda' and `a`.`status_pembukuan` = '1') AS `total` ;
 
 -- --------------------------------------------------------
 
@@ -449,7 +449,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `laba`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laba`  AS SELECT (select ifnull(sum(`a`.`jumlah_cicilan`),0) from `pengembalians` `a` where `a`.`status_pinjam` = '0' and `a`.`aktif` = '1') - (select ifnull(sum(`b`.`total`),0) from `pinjamans` `b` where `b`.`status` = '0' and `b`.`aktif` = '1') AS `laba``laba`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laba`  AS SELECT (select ifnull(sum(`a`.`jumlah_cicilan`),0) from `pengembalians` `a` where `a`.`status_pinjam` = '0' and `a`.`aktif` = '1') - (select ifnull(sum(`b`.`total`),0) from `pinjamans` `b` where `b`.`status` = '0' and `b`.`aktif` = '1') AS `laba` ;
 
 -- --------------------------------------------------------
 
@@ -458,7 +458,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `sisa_kas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `sisa_kas`  AS SELECT (select `kas_masuk`.`total` from `kas_masuk`) - (select `kas_keluar`.`total` from `kas_keluar`) AS `total``total`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`localhost` SQL SECURITY DEFINER VIEW `sisa_kas`  AS SELECT (select `kas_masuk`.`total` from `kas_masuk`) - (select `kas_keluar`.`total` from `kas_keluar`) AS `total` ;
 
 -- --------------------------------------------------------
 
@@ -467,7 +467,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `tot_pinjam`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tot_pinjam`  AS SELECT ifnull(sum(`pinjamans`.`total`),0) AS `total` FROM `pinjamans` WHERE `pinjamans`.`status` = '1''1'  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tot_pinjam`  AS SELECT ifnull(sum(`pinjamans`.`total`),0) AS `total` FROM `pinjamans` WHERE `pinjamans`.`status` = '1\'1' ;
 
 --
 -- Indexes for dumped tables
@@ -504,121 +504,6 @@ ALTER TABLE `migrations`
 ALTER TABLE `nasabahs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `no_rekening` (`no_rekening`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `pengembalians`
---
-ALTER TABLE `pengembalians`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
-
---
--- Indexes for table `pinjamans`
---
-ALTER TABLE `pinjamans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `profiles`
---
-ALTER TABLE `profiles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transaksis`
---
-ALTER TABLE `transaksis`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `angsurans`
---
-ALTER TABLE `angsurans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
-
---
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `general_ledgers`
---
-ALTER TABLE `general_ledgers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `nasabahs`
---
-ALTER TABLE `nasabahs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
---
--- AUTO_INCREMENT for table `pengembalians`
---
-ALTER TABLE `pengembalians`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pinjamans`
---
-ALTER TABLE `pinjamans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
-
---
--- AUTO_INCREMENT for table `profiles`
---
-ALTER TABLE `profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `transaksis`
---
-ALTER TABLE `transaksis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
